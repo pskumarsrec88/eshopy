@@ -1,0 +1,25 @@
+<div style="display: none" class="status alert alert-success"></div>
+<%= form_for @product, class: "contact-form row", id:"main-contact-form" do |f| %>
+    <% if @product.errors.any? %>
+      <div id="error_explanation">
+	<h3><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h3>
+	<ul>
+	<% @product.errors.full_messages.each do |message| %>
+	  <li>* <%= message %></li>
+	<% end %>
+	</ul>
+      </div>
+    <% end %>
+    <div class="form-group col-md-12">
+	<%= f.text_field :title, placeholder: :Title, required: :required, class: "form-control" %>
+    </div>    
+    <div class="form-group col-md-12">
+	<%= f.text_area :description, placeholder: :Description, required: :required, id: :message, class: "form-control" %>
+    </div>
+    <div class="form-group col-md-12">
+	<%= f.text_field :price, placeholder: :Price, required: :required, class: "form-control" %>
+    </div>                        
+    <div class="form-group col-md-12">
+	<input type="submit" value="Submit" class="btn btn-primary pull-right" name="submit">
+    </div>
+<% end %>

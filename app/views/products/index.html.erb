@@ -1,0 +1,42 @@
+<section>
+    <div class="container">
+	    <div class="row">
+		    <div class="col-sm-3">
+			    <%= render "products/left_static_content"%>
+		    </div>
+		    
+		    <div class="col-sm-9 padding-right">
+			    <div class="features_items"><!--features_items-->
+				    <h2 class="title text-center">Features Items</h2>
+				    <% @products && @products.each do |product| %>
+				    <div class="col-sm-4">
+					    <div class="product-image-wrapper">
+						    <div class="single-products">
+								    <div class="productinfo text-center">
+									    <%= image_tag product.img_path %>
+									    <h2>$<%= product.price %></h2>
+									    <p><%= product.title %></p>
+									    <%= link_to "<i class='fa fa-shopping-cart'></i>Add to cart".html_safe, new_product_order_path(product_id: product.try(:id)), class: "btn btn-default add-to-cart" %>
+								    </div>
+								    <div class="product-overlay">
+									    <div class="overlay-content">
+										    <h2>$<%= product.price %></h2>
+										    <h3><%= product.title %></h3>
+										    <p><%= product.description %></p>
+										    <%= link_to "<i class='fa fa-shopping-cart'></i>Add to cart".html_safe, new_product_order_path(product_id: product.try(:id)), class: "btn btn-default add-to-cart" %>									    </div>
+								    </div>
+						    </div>	
+						    <div class="choose">
+							    <ul class="nav nav-pills nav-justified">
+								    <li><%= link_to "<i class='fa fa-plus-square'></i>Edit".html_safe, edit_product_path(product.id)%></li>
+								    <li><%= link_to "<i class='fa fa-plus-square'></i>Delete".html_safe, product_path(product.id), method: :delete%></li>
+							    </ul>
+						    </div>
+					    </div>
+				    </div>
+				    <% end %>																
+			    </div><!--features_items-->					
+		    </div>
+	    </div>
+    </div>
+</section>

@@ -1,0 +1,7 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: eshop_development
+  username: postgres
+  password: root
+  pool: 100

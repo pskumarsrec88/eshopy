@@ -1,0 +1,63 @@
+<section id="cart_items">
+    <div class="container">	    
+	    <div class="table-responsive cart_info">
+		    <table class="table table-condensed">
+			    <caption><h2>Orders Summary</h2></caption>
+			    <thead>
+				    <tr class="cart_menu">
+					    <td class="image">Days</td>
+					    <td class="description">Fulfilled</td>
+					    <td class="price">UnFulfilled</td>
+					    <td class="total">Total</td>
+					    <td></td>
+					    <td></td>
+				    </tr>
+			    </thead>
+			    <tbody>
+				    <tr>
+					    <td class="cart_product">
+						    <a href="#">Today</a>
+					    </td>
+					    <td class="cart_description">
+						    <p><%= @today.fulfilled.count %></p>
+					    </td>
+					    <td class="cart_price">
+						    <p><%= @today.unfulfilled.count %></p>
+					    </td>
+					    <td class="cart_quantity">
+						    <p><%= @today.count %></p>
+					    </td>
+				    </tr>
+				    <tr>
+					    <td class="cart_product">
+						    <a href="">Last 7 Days</a>
+					    </td>
+					    <td class="cart_description">
+						    <p><%= @week.fulfilled.count %></p>
+					    </td>
+					    <td class="cart_price">
+						    <p><%= @week.unfulfilled.count %></p>
+					    </td>
+					    <td class="cart_quantity">
+						    <p><%= @week.count %></p>
+					    </td>
+				    </tr>
+				    <tr>
+					    <td class="cart_product">
+						    <a href="">Last 30 days</a>
+					    </td>
+					    <td class="cart_description">
+						    <p><%= @month.fulfilled.count %></p>
+					    </td>
+					    <td class="cart_price">
+						    <p><%= @month.unfulfilled.count %></p>
+					    </td>
+					    <td class="cart_quantity">
+						    <p><%= @month.count %></p>
+					    </td>
+				    </tr>
+			    </tbody>
+		    </table>
+	    </div>
+    </div>
+</section>

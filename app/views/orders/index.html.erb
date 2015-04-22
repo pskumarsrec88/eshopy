@@ -1,0 +1,50 @@
+<section id="cart_items">
+    <div class="container">	    
+	    <div class="table-responsive cart_info">
+		    <table class="table table-condensed">
+			    <thead>
+				    <tr class="cart_menu">
+					    <td class="image">Item</td>
+					    <td class="description">Title</td>
+					    <td class="price">Price</td>
+					    <td class="quantity">Quantity</td>
+					    <td class="total">Total</td>
+					    <td class="total">Status</td>
+					    <td></td>
+					    <td></td>
+				    </tr>
+			    </thead>
+			    <tbody>
+				<% @orders && @orders.each do |order| %>
+				    <tr>
+					    <td class="cart_product">
+						    <a href=""><%= image_tag order.product_img_path, size: "110x110" %></a>
+					    </td>
+					    <td class="cart_description">
+						    <p><%= order.product_title %></p>
+					    </td>
+					    <td class="cart_price">
+						    <p>$<%= order.price %></p>
+					    </td>
+					    <td class="cart_quantity">
+						    <p><%= order.quantity %></p>
+					    </td>
+					    <td class="cart_total">
+						    <p class="cart_total_price">$<%= order.value %></p>
+					    </td>
+					    <td class="cart_total">
+						    <p><%= order.order_status %></p>
+					    </td>
+					    <td class="cart_delete">
+						<%= link_to 'Change ', edit_product_order_path(product_id: order.try(:product).try(:id), id: order.try(:id)), class: "cart_quantity_delete" %>
+					    </td>
+					    <td class="cart_delete">
+						<%= link_to 'Remove', order_path(order.try(:id)), method: :delete, class: "cart_quantity_delete" %>
+					    </td>
+				    </tr>
+				  <% end %>
+			    </tbody>
+		    </table>
+	    </div>
+    </div>
+</section>
