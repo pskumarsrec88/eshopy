@@ -5,3 +5,11 @@ development:
   username: postgres
   password: root
   pool: 100
+  
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: eshop_development
+  username: postgres
+  password: root
+  pool: 100
