@@ -9,6 +9,7 @@
 					    <td class="price">Total Products</td>
 					    <td class="quantity">Total Quantity</td>
 					    <td class="total">Price</td>
+					    <td class="total">Status</td>
 					    <td></td>
 				    </tr>
 			    </thead>
@@ -29,6 +30,9 @@
 					    </td>
 					    <td class="cart_total">
 						    <p>$<%= order.value %></p>
+					    </td>
+					    <td class="cart_total">
+						    <p><%= link_to order.order_status,  edit_order_path(order)%></p>
 					    </td>
 					    <td class="cart_delete">
 						<%= link_to 'Show Order ', order_path(order), class: "btn btn-primary" %>

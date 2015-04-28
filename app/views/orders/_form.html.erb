@@ -11,14 +11,6 @@
     </div>
   <% end %>
   <div class="form-group col-md-12">
-    <div class="form-group col-md-6"><%= image_tag @product.img_path, size: "110x110" %></div>
-    <div class="form-group col-md-6"><h3><%= @product.title %> - $<%= @product.price %></h3></div>
-  </div>
-  <div class="form-group col-md-12">
-	<%= f.text_field :quantity, placeholder: :Quantity, required: :required, class: "form-control" %>
-    </div>
-  <%= f.hidden_field :product_id, value: params[:product_id] %>
-  <div class="form-group col-md-12">
 	<%= f.select :status, options_for_select([["Fulfilled" ,true],["UnFulfilled", false]], @order.status), class: "form-control" %>
     </div>
   <div class="form-group col-md-12">
