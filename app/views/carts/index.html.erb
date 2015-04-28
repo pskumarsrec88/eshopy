@@ -39,7 +39,7 @@
 					    </td>
 				    </tr>
 				  <% end %>
-				  
+				<% if @carts %>
 				<tr>
 				  <td colspan="3">&nbsp;</td>
 				  <td colspan="3"> <span>Total : $<%= @carts.sum(:value) %></span></td>
@@ -48,6 +48,7 @@
 				  <td colspan="3">&nbsp;</td>
 				  <td colspan="3"> <a href="/orders" class="btn btn-primary" data-method = 'post' >Checkout</a></td>
 				</tr>
+				<% end %>
 			    </tbody>
 		    </table>
 	    </div>
