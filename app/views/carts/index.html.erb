@@ -39,7 +39,7 @@
 					    </td>
 				    </tr>
 				  <% end %>
-				<% if @carts %>
+				<% if @carts.present? %>
 				<tr>
 				  <td colspan="3">&nbsp;</td>
 				  <td colspan="3"> <span>Total : $<%= @carts.sum(:value) %></span></td>

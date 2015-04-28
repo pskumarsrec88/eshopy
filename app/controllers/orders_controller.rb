@@ -25,6 +25,7 @@ class OrdersController < ApplicationController
     @cart = Cart.all
     @order = Order.create(value: @cart.sum(:value))
     @cart.each { |cart| @order.order_products.create(product_id: cart.product_id, quantity: cart.quantity, price: cart.price) }
+    @cart.destroy_all
     respond_to do |format|
       format.html { redirect_to orders_path, notice: 'Order was successfully created.' }
     end
