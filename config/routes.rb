@@ -1,14 +1,19 @@
 Rails.application.routes.draw do
   
+  resources :carts
+
   # Root path of the application
   root 'dashboard#index'
   
   #Routes for products CRUD
   resources :products do
-    resources :orders, only: [:new, :edit]
+    resources :carts, only: [:new, :edit]
   end
   
   #Routes for orders CRUD
-  resources :orders,  except: [:new, :edit]
+  resources :carts,  except: [:new, :edit]
+  
+  #Routes for orders CRUD
+  resources :orders
 
 end
