@@ -1,0 +1,55 @@
+<section id="cart_items">
+    <div class="container">	    
+	    <div class="table-responsive cart_info">
+		    <table class="table table-condensed">
+			    <thead>
+				    <tr class="cart_menu">
+					    <td class="image">Item</td>
+					    <td class="description"></td>
+					    <td class="price">Price</td>
+					    <td class="quantity">Quantity</td>
+					    <td class="total">Total</td>
+					    <td></td>
+					    <td></td>
+				    </tr>
+			    </thead>
+			    <tbody>
+				<% @carts && @carts.each_with_index do |cart, index| %>
+				    <tr>
+					    <td class="cart_product">
+						    <a href=""><%= image_tag cart.product_img_path, size: "110x110" %></a>
+					    </td>
+					    <td class="cart_description">
+						    <h4><%= cart.product_title %></h4>
+					    </td>
+					    <td class="cart_price">
+						    <p>$<%= cart.price %></p>
+					    </td>
+					    <td class="cart_quantity">
+						    <p><%= cart.quantity %></p>
+					    </td>
+					    <td class="cart_total">
+						    <p class="cart_total_price">$<%= cart.value %></p>
+					    </td>
+					    <td class="cart_delete">
+						<%= link_to 'Change ', edit_product_cart_path(product_id: cart.try(:product).try(:id), id: cart.try(:id)), class: "cart_quantity_delete" %>
+					    </td>
+					    <td class="cart_delete">
+						<%= link_to 'Remove', cart_path(cart.try(:id)), method: :delete, class: "cart_quantity_delete" %>
+					    </td>
+				    </tr>
+				  <% end %>
+				  
+				<tr>
+				  <td colspan="3">&nbsp;</td>
+				  <td colspan="3"> <span>Total : $<%= @carts.sum(:value) %></span></td>
+				</tr>
+				<tr>
+				  <td colspan="3">&nbsp;</td>
+				  <td colspan="3"> <a href="/orders" class="btn btn-primary" data-method = 'post' >Checkout</a></td>
+				</tr>
+			    </tbody>
+		    </table>
+	    </div>
+    </div>
+</section>

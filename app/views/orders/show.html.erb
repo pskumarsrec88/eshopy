@@ -1,24 +1,46 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Quantity:</strong>
-  <%= @order.quantity %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @order.price %>
-</p>
-
-<p>
-  <strong>Value:</strong>
-  <%= @order.value %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @order.status %>
-</p>
-
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+<section id="cart_items">
+    <div class="container">	    
+	    <div class="table-responsive cart_info">
+		    <table class="table table-condensed">
+			    <thead>
+				    <tr class="cart_menu">
+					    <td class="image">Item</td>
+					    <td class="description"></td>
+					    <td class="price">Price</td>
+					    <td class="quantity">Quantity</td>
+					    <td class="quantity">Total</td>
+				    </tr>
+			    </thead>
+			    <tbody>
+				<% @order && @order.order_products.each_with_index do |order_product, index| %>
+				    <tr>
+					    <td class="cart_product">
+						    <a href=""><%= image_tag order_product.product_img_path, size: "110x110" %></a>
+					    </td>
+					    <td class="cart_description">
+						    <h4><%= order_product.product_title %></h4>
+					    </td>
+					    <td class="cart_price">
+						    <p>$<%= order_product.price %></p>
+					    </td>
+					    <td class="cart_quantity">
+						    <p><%= order_product.quantity %></p>
+					    </td>
+					    <td class="cart_total">
+						    <p class="cart_total_price">$<%= order_product.price *  order_product.quantity %></p>
+					    </td>
+				    </tr>
+				  <% end %>
+				  
+				<tr>
+				  <td>&nbsp;</td>
+				  <td>&nbsp;</td>
+				  <td>&nbsp;</td>
+				  <td>Total :</td>
+				  <td> <p class="cart_total_price">$<%= @order.value %></p></td>
+				</tr>
+			    </tbody>
+		    </table>
+	    </div>
+    </div>
+</section>

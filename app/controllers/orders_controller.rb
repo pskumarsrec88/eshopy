@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:edit, :update, :destroy]
+  before_action :set_order, only: [:show, :edit, :update, :destroy]
   before_action :set_product, only: [:edit, :new]
 
   # GET /orders
@@ -22,13 +22,11 @@ class OrdersController < ApplicationController
 
   # POST /orders
   def create
-    @order = Order.new(order_params)
+    @cart = Cart.all
+    @order = Order.create(value: @cart.sum(:value))
+    @cart.each { |cart| @order.order_products.create(product_id: cart.product_id, quantity: cart.quantity, price: cart.price) }
     respond_to do |format|
-      if @order.save
-        format.html { redirect_to orders_path, notice: 'Order was successfully created.' }
-      else
-        format.html { render :new }
-      end
+      format.html { redirect_to orders_path, notice: 'Order was successfully created.' }
     end
   end
   

@@ -1,7 +1,8 @@
 class Product < ActiveRecord::Base
   
   #Associations
-  has_many :orders, :dependent => :destroy
+  has_many :order_products
+  has_many :orders, through: :order_products
   
   #Validations
   validates_presence_of :title
